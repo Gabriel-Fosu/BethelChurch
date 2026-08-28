@@ -1,0 +1,298 @@
+/* ══════════════════════════════════════════════════════════════
+   EVENTS PAGE — events.css
+   ══════════════════════════════════════════════════════════════ */
+
+
+/* ── CATEGORY FILTER TAGS ───────────────────────────────────── */
+.event-filters {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.filter-tag {
+    padding: .45rem 1.1rem;
+    border: 1.5px solid rgba(107, 30, 44, .2);
+    border-radius: 2px;
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: all .2s;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.filter-tag:hover,
+.filter-tag.active {
+    background: var(--burgundy);
+    color: #fff;
+    border-color: var(--burgundy);
+}
+
+
+/* ── EVENT LIST CARD ────────────────────────────────────────── */
+.events-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(107, 30, 44, .08);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.event-card {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    transition: background .15s;
+}
+
+.event-card:hover {
+    background: var(--burgundy-faint);
+}
+
+.event-card__date {
+    min-width: 64px;
+    text-align: center;
+    background: var(--burgundy-faint);
+    padding: .75rem .5rem;
+    border-radius: 2px;
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.event-card__date--image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-width: 120px;
+    min-height: 90px;
+}
+
+/* Dark overlay so the date text is readable over the image */
+.event-card__date--image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(74, 17, 24, 0.55);
+    border-radius: 2px;
+}
+
+/* The date text sits above the overlay */
+.event-card__date-inner {
+    position: relative;
+    z-index: 1;
+}
+
+/* Date text — changes colour when image is present */
+.event-card__date--image .event-day {
+    color: #fff;
+}
+
+.event-card__date--image .event-month {
+    color: rgba(255, 255, 255, .85);
+}
+
+.event-day {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--burgundy);
+    line-height: 1;
+    display: block;
+}
+
+.event-month {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--text-mid);
+    display: block;
+}
+
+.event-card__info {
+    flex: 1;
+}
+
+.event-category {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--burgundy);
+    font-weight: 500;
+    display: block;
+    margin-bottom: .3rem;
+}
+
+.event-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: .3rem;
+    color: var(--text-dark);
+}
+
+.event-meta {
+    font-size: .82rem;
+    color: var(--text-light);
+    margin-bottom: .4rem;
+}
+
+.event-desc {
+    font-size: .88rem;
+    color: var(--text-mid);
+    margin: 0;
+}
+
+.event-card__action {
+    flex-shrink: 0;
+}
+
+.event-register-btn {
+    font-size: .82rem;
+    color: var(--burgundy);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    white-space: nowrap;
+}
+
+.event-full-badge {
+    font-size: .75rem;
+    background: var(--burgundy-faint);
+    color: var(--burgundy);
+    padding: .3rem .75rem;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-weight: 500;
+}
+
+.no-events {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-light);
+    background: #fff;
+}
+
+
+/* ── EVENT DETAIL ───────────────────────────────────────────── */
+.event-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.event-detail-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--burgundy-faint);
+    border-left: 3px solid var(--burgundy);
+    border-radius: 2px;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.meta-label {
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.meta-value {
+    font-size: .95rem;
+    color: var(--text-dark);
+    font-weight: 400;
+}
+
+.event-description h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--burgundy);
+    margin-bottom: .75rem;
+}
+
+.event-description p {
+    line-height: 1.8;
+    color: var(--text-mid);
+}
+
+
+/* ── REGISTRATION CARD ──────────────────────────────────────── */
+.registration-card {
+    background: #fff;
+    border: 1px solid rgba(107, 30, 44, .1);
+    border-radius: 2px;
+    padding: 2rem;
+    position: sticky;
+    top: 90px;
+}
+
+.registration-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: .5rem;
+}
+
+.registration-card > p {
+    font-size: .88rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.registration-closed {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.registration-closed h3 {
+    color: var(--burgundy);
+    margin-bottom: .75rem;
+}
+
+.registration-closed p {
+    font-size: .9rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+}
+
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .event-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .event-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .registration-card {
+        position: static;
+    }
+}

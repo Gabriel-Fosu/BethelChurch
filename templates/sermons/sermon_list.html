@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Sermons — Bethel Baptist Church{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/sermons.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="hero reveal">
+    <svg class="hero-cross" viewBox="0 0 200 200" fill="none">
+        <rect x="85" y="10" width="30" height="180" fill="white"/>
+        <rect x="20" y="60" width="160" height="30" fill="white"/>
+    </svg>
+    <div class="hero-content reveal reveal-delay-2">
+        <span class="hero-eyebrow">Messages</span>
+        <h1 class="hero-title">Preaching & <em>Teachings</em></h1>
+        <p class="hero-subtitle">Search our library of messages, series, and teachings.</p>
+    </div>
+</section>
+
+<div class="sermons-section">
+
+    <!-- FILTER BAR — id="filterForm" is important -->
+    <form method="GET" action="/sermons/"
+        class="filter-bar reveal reveal-delay-1"
+        id="filterForm">
+        <input type="text" name="q"
+            value="{{ search }}"
+            placeholder="Search sermons by title...">
+        <select name="speaker">
+            <option value="">All Speakers</option>
+            {% for speaker in speakers %}
+            <option value="{{ speaker.id }}"
+                {% if speaker_filter == speaker.id|stringformat:"s" %}selected{% endif %}>
+                {{ speaker.name }}
+            </option>
+            {% endfor %}
+        </select>
+        <select name="series">
+            <option value="">All Series</option>
+            {% for series in series_list %}
+            <option value="{{ series.id }}"
+                {% if series_filter == series.id|stringformat:"s" %}selected{% endif %}>
+                {{ series.title }}
+            </option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="filter-btn">Search</button>
+        <a href="/sermons/" class="clear-btn" id="clearBtn">Clear</a>
+    </form>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar reveal">
+        <p class="results-count" id="resultsCount">
+            Showing <strong>{{ total }}</strong>
+            sermon{% if total != 1 %}s{% endif %}
+        </p>
+        <div class="view-toggle">
+            <button class="toggle-btn active" id="gridBtn"
+                onclick="switchView('grid')">⊞ Grid</button>
+            <button class="toggle-btn" id="listBtn"
+                onclick="switchView('list')">☰ List</button>
+        </div>
+    </div>
+
+    <!-- WRAPPER — JS updates everything inside here -->
+    <div id="sermonsWrapper">
+
+        <!-- GRID VIEW -->
+        <div id="gridView" class="sermons-grid">
+            {% for sermon in sermons %}
+            <a href="{% url 'sermon_detail' sermon.slug %}/"
+                class="sermon-card reveal reveal-delay-{{ loop.index }}">
+                <div class="sermon-thumb">
+                    <div class="play-btn">
+                        <div class="play-icon"></div>
+                    </div>
+                </div>
+                <div class="sermon-info">
+                    {% if sermon.series %}
+                    <div class="sermon-series">{{ sermon.series.title }}</div>
+                    {% endif %}
+
+                    <div class="sermon-title">{{ sermon.title }}</div>
+                    <div class="sermon-meta">
+                        {% if sermon.speaker %}{{ sermon.speaker.name }}{% endif %}
+                        · {{ sermon.date|date:"F j, Y" }}
+                    </div>
+                    <div class="sermon-meta">{{ sermon.scripture_reference }}</div>
+                </div>
+            </a>
+            {% empty %}
+            <div class="no-results">
+                <p>No sermons found. Try adjusting your search.</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- LIST VIEW — hidden by default -->
+        <div id="listView" class="sermons-list" style="display:none;">
+            {% for sermon in sermons %}
+            <a href="/sermons/{{ sermon.slug }}/" class="sermon-row">
+                <div class="sermon-row-thumb">
+                    <div class="play-icon"></div>
+                </div>
+                <div class="sermon-row-info">
+                    <div class="sermon-row-title">{{ sermon.title }}</div>
+                    <div class="sermon-row-meta">
+                        <span>{{ sermon.speaker }}</span>
+                        <span>{{ sermon.date }}</span>
+                    </div>
+                </div>
+                <span class="sermon-row-series">{{ sermon.series }}</span>
+                <span class="sermon-row-scripture">{{ sermon.scripture }}</span>
+            </a>
+            {% empty %}
+            <p style="padding:2rem; text-align:center; color:var(--text-light);">
+                No sermons found.
+            </p>
+            {% endfor %}
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="pagination" id="pagination">
+                {% if page_obj.has_previous %}
+                <a class="page-btn"
+                    href="?page={{ page_obj.previous_page_number }}&q={{ search }}&speaker={{ speaker_filter }}&series={{ series_filter }}">
+                    ‹
+                </a>
+                {% endif %}
+
+                {% for p in paginator.page_range %}
+                <a class="page-btn {% if p == page_obj.number %}active{% endif %}"
+                    href="?page={{ p }}&q={{ search }}&speaker={{ speaker_filter }}&series={{ series_filter }}">
+                    {{ p }}
+                </a>
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <a class="page-btn"
+                    href="?page={{ page_obj.next_page_number }}&q={{ search }}&speaker={{ speaker_filter }}&series={{ series_filter }}">
+                    ›
+                </a>
+                {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/sermons.js}"></script>
+{% endblock %}

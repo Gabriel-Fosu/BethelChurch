@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ group.name }} — Bethel Baptist Church{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/ministries.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero reveal">
+    <svg class="hero-cross" viewBox="0 0 200 200" fill="none">
+        <rect x="85" y="10" width="30" height="180" fill="white"/>
+        <rect x="20" y="60" width="160" height="30" fill="white"/>
+    </svg>
+    <div class="hero-content reveal reveal-delay-2">
+        <span class="hero-eyebrow">{{ ministry.get_type_display }}</span>
+        <h1 class="hero-title">{{ group.name }}</h1>
+        <p class="hero-subtitle">
+            {{ group.get_meeting_day_display }}s at
+            {{ group.meeting_time|time:"g:i A" }}
+            · {{ group.location_area }}
+        </p>
+    </div>
+</section>
+
+<!-- GROUP DETAIL -->
+<section style="padding:4rem 2rem; background:var(--cream);">
+    <div class="container">
+        <div class="ministry-detail-grid">
+
+            <!-- LEFT — Info + Form -->
+            <div class="reveal">
+                <span class="section-label">About This Group</span>
+                <h2 class="section-title">{{ group.name }}</h2>
+                <p style="color:var(--text-mid); line-height:1.8; margin-bottom:2rem;">
+                    {{ group.description }}
+                </p>
+
+                <!-- Group details -->
+                <div class="group-detail-meta">
+                    <div class="group-meta-item">
+                        <span class="group-meta-label">📅 Meets</span>
+                        <span class="group-meta-value">
+                            {{ group.get_meeting_day_display }}s
+                        </span>
+                    </div>
+                    <div class="group-meta-item">
+                        <span class="group-meta-label">🕐 Time</span>
+                        <span class="group-meta-value">
+                            {{ group.meeting_time|time:"g:i A" }}
+                        </span>
+                    </div>
+                    <div class="group-meta-item">
+                        <span class="group-meta-label">📍 Location</span>
+                        <span class="group-meta-value">
+                            {{ group.location_area }}
+                        </span>
+                    </div>
+                    {% if group.leader %}
+                    <div class="group-meta-item">
+                        <span class="group-meta-label">👤 Leader</span>
+                        <span class="group-meta-value">
+                            {{ group.leader.get_full_name }}
+                        </span>
+                    </div>
+                    {% endif %}
+                    {% if group.max_members %}
+                    <div class="group-meta-item">
+                        <span class="group-meta-label">👥 Max Size</span>
+                        <span class="group-meta-value">
+                            {{ group.max_members }} members
+                        </span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- RIGHT — Interest Form -->
+            <div class="reveal reveal-delay-2">
+                <div class="group-interest-card">
+                    <h3>Join This Group</h3>
+                    <p>
+                        Fill in your details and the group leader
+                        will reach out to you.
+                    </p>
+
+                    <form method="POST"
+                        action="{% url 'group_detail' ministry.slug group.slug %}">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" name="name"
+                                class="form-input"
+                                placeholder="Kofi Asante" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" name="email"
+                                class="form-input"
+                                placeholder="kofi@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" name="phone"
+                                class="form-input"
+                                placeholder="+233 50 000 0000">
+                        </div>
+
+                        <button type="submit" class="form-submit">
+                            Express Interest →
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Back link -->
+        <div style="margin-top:2rem;">
+            <a href="{% url 'ministry_detail' ministry.slug %}"
+                style="color:var(--burgundy); font-size:.88rem;
+                text-transform:uppercase; letter-spacing:.08em;">
+                ← Back to {{ ministry.get_type_display }}
+            </a>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

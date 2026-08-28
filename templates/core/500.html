@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Server Error{% endblock %}
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">500</h1>
+        <p class="hero-subtitle">Something went wrong. We are working on it.</p>
+        <a href="{% url 'home' %}" class="btn-primary">Return Home</a>
+    </div>
+</section>
+{% endblock %}

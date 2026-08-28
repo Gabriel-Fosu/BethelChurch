@@ -1,0 +1,291 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Bethel Baptist Church — Accra, Ghana{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block content %}
+
+<section class="hero reveal">
+    <svg class="hero-cross" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="85" y="10" width="30" height="180" fill="white"/>
+      <rect x="20" y="60" width="160" height="30" fill="white"/>
+    </svg>
+  <div class="hero-content reveal reveal-delay-2">
+    <p class="hero-eyebrow reveal reveal-delay-2">Accra, Ghana &nbsp;·&nbsp; Est. 1987</p>
+    <h1 class="hero-title reveal reveal-delay-2">A Place to <em>Belong,</em><br>A Family to <em>Love</em></h1>
+    <p class="hero-subtitle reveal reveal-delay-2">You are warmly welcome at Bethel Baptist Church. Come as you are — find community, purpose, and grace.</p>
+    <div class="hero-buttons reveal reveal-delay-3">
+      <button class="btn-primary">Plan Your Visit</button>
+      <button class="btn-outline">Watch Online</button>
+    </div>
+  </div>
+</section>
+
+<div class="service-bar reveal reveal-delay-1">
+  <div class="service-item reveal reveal-delay-2">
+    <span class="service-icon">🕊</span>
+    <div>
+      <div class="service-label">Sunday Service</div>
+      <div class="service-value">8:00 AM &nbsp;·&nbsp; 10:00 AM &nbsp;·&nbsp; 11:00 AM</div>
+    </div>
+  </div>
+  <div class="service-item reveal reveal-delay-3">
+    <span class="service-icon">📍</span>
+    <div>
+      <div class="service-label">Location</div>
+      <div class="service-value">12 Liberation Road, Accra</div>
+    </div>
+  </div>
+  <div class="service-item reveal reveal-delay-4">
+    <span class="service-icon">📺</span>
+    <div>
+      <div class="service-label">Live Stream</div>
+      <div class="service-value">YouTube &amp; Facebook</div>
+    </div>
+  </div>
+</div>
+
+<section class="about reveal" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image">
+        <div class="about-image-placeholder">
+          <svg class="cross-svg" viewBox="0 0 80 80" fill="none">
+            <rect x="35" y="5" width="10" height="70" fill="#6B1E2C"/>
+            <rect x="8" y="25" width="64" height="10" fill="#6B1E2C"/>
+          </svg>
+          <span style="font-size:0.78rem;color:var(--text-light);letter-spacing:0.06em;text-transform:uppercase;">Congregation Photo</span>
+        </div>
+      </div>
+      <div>
+        <p class="section-label reveal reveal-delay-1">Who We Are</p>
+        <h2 class="section-title reveal reveal-delay-2">Rooted in Faith,<br><em>Open to All</em></h2>
+        <p class="section-body reveal reveal-delay-2">Bethel Baptist Church is a vibrant, multicultural church community in the heart of Accra. For over three decades, we've been committed to love, service, and the transformative power of the Gospel.</p>
+        <p class="section-body reveal reveal-delay-2" style="margin-top:1rem;">We believe every person carries dignity and purpose. Whatever your background or story, there's a place for you here.</p>
+        <div class="about-stats reveal reveal-delay-3">
+          <div class="stat-card reveal reveal-delay-4">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Years of Ministry</div>
+          </div>
+          <div class="stat-card reveal reveal-delay-4">
+            <div class="stat-number">400</div>
+            <div class="stat-label">Active Members</div>
+          </div>
+          <div class="stat-card reveal reveal-delay-4">
+            <div class="stat-number">7</div>
+            <div class="stat-label">Small Groups</div>
+          </div>
+          <div class="stat-card reveal reveal-delay-4">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Outreach Programs</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <a class="btn btn-outline-dark reveal reveal-delay-5" href="/about/">See more about us →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sermons reveal" id="sermons">
+  <div class="container">
+    <p class="section-label">Recent Messages</p>
+    <h2 class="section-title reveal-delay-1">Sermons & <em>Teachings</em></h2>
+    <div class="sermons-grid">
+      <div class="sermon-card reveal reveal-delay-2">
+        <div class="sermon-thumb">
+          <div class="play-btn"><div class="play-icon"></div></div>
+        </div>
+        <div class="sermon-info">
+          <div class="sermon-series">Series: Walking in Grace</div>
+          <div class="sermon-title">The God Who Restores</div>
+          <div class="sermon-meta">Reverend Godwin Ayomide &nbsp;·&nbsp; Apr 20, 2025</div>
+        </div>
+      </div>
+      <div class="sermon-card reveal reveal-delay-3">
+        <div class="sermon-thumb">
+          <div class="play-btn"><div class="play-icon"></div></div>
+        </div>
+        <div class="sermon-info">
+          <div class="sermon-series">Series: Walking in Grace</div>
+          <div class="sermon-title">When Faith Feels Far Away</div>
+          <div class="sermon-meta">Pastor Peter &nbsp;·&nbsp; Apr 13, 2025</div>
+        </div>
+      </div>
+      <div class="sermon-card reveal reveal-delay-4">
+        <div class="sermon-thumb">
+          <div class="play-btn"><div class="play-icon"></div></div>
+        </div>
+        <div class="sermon-info">
+          <div class="sermon-series">Easter Special</div>
+          <div class="sermon-title">He Is Risen: What It Changes</div>
+          <div class="sermon-meta">Reverend Godwin Ayomide &nbsp;·&nbsp; Apr 6, 2025</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <a class="btn btn-outline-dark reveal reveal-delay-5" href="/sermons/">See more sermons →</a>
+    </div>
+  </div>
+</section>
+
+<section class="ministries reveal" id="ministries">
+  <div class="container">
+    <p class="section-label reveal reveal-delay-1">Get Involved</p>
+    <h2 class="section-title reveal reveal-delay-1">Find Your <em>Community</em></h2>
+    <div class="min-grid">
+      <div class="min-card reveal reveal-delay-2">
+        <div class="min-icon">👶</div>
+        <div class="min-title">Children's Ministry</div>
+        <div class="min-desc">Safe, fun, and faith-filled programs for ages 0–12.</div>
+      </div>
+      <div class="min-card reveal reveal-delay-3">
+        <div class="min-icon">🎯</div>
+        <div class="min-title">Youth & Teens</div>
+        <div class="min-desc">A space for teenagers to grow in faith and friendship.</div>
+      </div>
+      <div class="min-card reveal reveal-delay-4">
+        <div class="min-icon">💒</div>
+        <div class="min-title">Couples & Family</div>
+        <div class="min-desc">Support, counseling, and community for families.</div>
+      </div>
+      <div class="min-card reveal reveal-delay-5">
+        <div class="min-icon">🌍</div>
+        <div class="min-title">Outreach & Missions</div>
+        <div class="min-desc">Serving Accra and beyond with love and compassion.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="events reveal" id="events">
+  <div class="container">
+    <p class="section-label reveal reveal-delay-1">What's Coming</p>
+    <h2 class="section-title reveal reveal-delay-1">Upcoming <em>Events</em></h2>
+    <div class="events-list">
+      <div class="event-row reveal reveal-delay-2">
+        <div class="event-date">
+          <div class="event-day">27</div>
+          <div class="event-month">Apr</div>
+        </div>
+        <div class="event-info">
+          <div class="event-title">Sunday Worship Service</div>
+          <div class="event-location">Main Sanctuary &nbsp;·&nbsp; 8:00 AM, 10:00 AM, 11:00 AM</div>
+        </div>
+        <span class="event-tag">Weekly</span>
+      </div>
+      <div class="event-row reveal reveal-delay-3">
+        <div class="event-date">
+          <div class="event-day">30</div>
+          <div class="event-month">Apr</div>
+        </div>
+        <div class="event-info">
+          <div class="event-title">Wednesday Bible Study</div>
+          <div class="event-location">Fellowship Hall &nbsp;·&nbsp; 6:30 PM</div>
+        </div>
+        <span class="event-tag">Weekly</span>
+      </div>
+      <div class="event-row reveal reveal-delay-4">
+        <div class="event-date">
+          <div class="event-day">10</div>
+          <div class="event-month">May</div>
+        </div>
+        <div class="event-info">
+          <div class="event-title">Family Fun Day & BBQ</div>
+          <div class="event-location">Church Grounds &nbsp;·&nbsp; 2:00 PM – 6:00 PM</div>
+        </div>
+        <span class="event-tag">Special</span>
+      </div>
+      <div class="event-row reveal reveal-delay-5">
+        <div class="event-date">
+          <div class="event-day">18</div>
+          <div class="event-month">May</div>
+        </div>
+        <div class="event-info">
+          <div class="event-title">Youth Conference 2025</div>
+          <div class="event-location">Main Auditorium &nbsp;·&nbsp; All Day</div>
+        </div>
+        <span class="event-tag">Conference</span>
+      </div>
+    </div>
+    <div>
+      <a class="btn btn-outline-dark reveal reveal-delay-4" href="/events/">See more events →</a>
+    </div>
+  </div>
+  </section>
+
+<section class="give reveal" id="give">
+  <div class="container">
+    <div class="give-inner reveal reveal-delay-1">
+      <h2 class="give-title">Give Generously</h2>
+      <p class="give-body">Your giving fuels our mission — from Sunday services to community outreach. Every gift, large or small, makes a real difference.</p>
+      <button class="give-btn reveal reveal-delay-2">Give Online</button>
+    </div>
+  </div>
+</section>
+
+<section class="contact reveal" id="contact">
+  <div class="container">
+    <p class="section-label reveal reveal-delay-1">Reach Out</p>
+    <h2 class="section-title reveal reveal-delay-1">We'd Love to <em>Hear From You</em></h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="reveal reveal-delay-1">Whether you're visiting for the first time, looking for prayer, or just want to connect — our team is here for you.</p>
+        <div class="contact-detail reveal reveal-delay-2">
+          <span class="contact-icon">📍</span>
+          <div>
+            <div class="contact-label">Address</div>
+            <div class="contact-value">12 Liberation Road, Accra, Ghana</div>
+          </div>
+        </div>
+        <div class="contact-detail reveal reveal-delay-3">
+          <span class="contact-icon">📞</span>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">+233 30 000 0000</div>
+          </div>
+        </div>
+        <div class="contact-detail reveal reveal-delay-4">
+          <span class="contact-icon">✉️</span>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">hello@graceandfellowship.gh</div>
+          </div>
+        </div>
+        <div class="contact-detail reveal reveal-delay-5">
+          <span class="contact-icon">🕊</span>
+          <div>
+            <div class="contact-label">Office Hours</div>
+            <div class="contact-value">Mon – Fri, 9:00 AM – 5:00 PM</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="contact-form reveal reveal-delay-1">
+          <div class="form-group reveal reveal-delay-2">
+            <label class="form-label">Your Name</label>
+            <input class="form-input" type="text" placeholder="Kwame Asante">
+          </div>
+          <div class="form-group reveal reveal-delay-3">
+            <label class="form-label">Email Address</label>
+            <input class="form-input" type="email" placeholder="you@example.com">
+          </div>
+          <div class="form-group reveal reveal-delay-4">
+            <label class="form-label">Message</label>
+            <textarea class="form-input form-textarea" placeholder="How can we help you?"></textarea>
+          </div>
+          <button class="form-submit reveal reveal-delay-4">Send Message</button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <a class="btn btn-outline-dark reveal reveal-delay-4" href="/contact/">See more details →</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

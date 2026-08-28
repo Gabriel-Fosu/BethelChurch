@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ ministry.get_type_display }} — Bethel Baptist Church{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/ministries.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero reveal">
+    <svg class="hero-cross" viewBox="0 0 200 200" fill="none">
+        <rect x="85" y="10" width="30" height="180" fill="white"/>
+        <rect x="20" y="60" width="160" height="30" fill="white"/>
+    </svg>
+    <div class="hero-content reveal reveal-delay-2">
+        <span class="hero-eyebrow">
+            {{ ministry.icon }} Ministry
+        </span>
+        <h1 class="hero-title">{{ ministry.get_type_display }}</h1>
+        {% if ministry.leader %}
+        <p class="hero-subtitle">Led by {{ ministry.leader }}</p>
+        {% endif %}
+    </div>
+</section>
+
+<!-- MINISTRY DETAIL -->
+<section style="padding: 4rem 2rem; background: var(--cream);">
+    <div class="container">
+        <div class="ministry-detail-grid">
+
+            <!-- LEFT — About -->
+            <div class="reveal">
+                <span class="section-label">About This Ministry</span>
+                <h2 class="section-title">{{ ministry.get_type_display }}</h2>
+                <p style="color:var(--text-mid); line-height:1.8; font-size:1rem;">
+                    {{ ministry.description }}
+                </p>
+
+                {% if ministry.leader %}
+                <div class="ministry-leader-card">
+                    <div class="ministry-leader-icon">👤</div>
+                    <div>
+                        <div class="ministry-leader-label">Ministry Leader</div>
+                        <div class="ministry-leader-name">{{ ministry.leader }}</div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <a href="{% url 'contact' %}" class="btn-secondary"
+                    style="display:inline-block; margin-top:2rem;">
+                    Get Involved →
+                </a>
+            </div>
+
+            <!-- RIGHT — Image -->
+            <div class="reveal reveal-delay-2">
+                {% if ministry.image %}
+                <div class="ministry-detail-image">
+                    <img src="{{ ministry.image.url }}" alt="{{ ministry.get_type_display }}">
+                </div>
+                {% else %}
+                <div class="ministry-detail-placeholder">
+                    <span class="ministry-detail-icon">{{ ministry.icon }}</span>
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SMALL GROUPS SECTION -->
+{% if groups %}
+<section style="padding: 4rem 2rem; background: #fff;">
+    <div class="container">
+        <span class="section-label">Connect Deeper</span>
+        <h2 class="section-title">Small Groups</h2>
+        <p style="color:var(--text-mid); margin-bottom:2.5rem;">
+            Join a small group within this ministry to build
+            deeper relationships and grow together.
+        </p>
+
+        <div class="groups-grid">
+            {% for group in groups %}
+            <a href="{% url 'group_detail' ministry.slug group.slug %}"
+                class="group-card reveal reveal-delay-{{ forloop.counter }}">
+                <div class="group-card__header">
+                    <h3 class="group-card__name">{{ group.name }}</h3>
+                    {% if group.location_area %}
+                    <span class="group-card__location">
+                        📍 {{ group.location_area }}
+                    </span>
+                    {% endif %}
+                </div>
+                <p class="group-card__desc">
+                    {{ group.description|truncatewords:20 }}
+                </p>
+                <div class="group-card__meta">
+                    <span>📅 {{ group.get_meeting_day_display }}s</span>
+                    <span>🕐 {{ group.meeting_time|time:"g:i A" }}</span>
+                </div>
+                <span class="group-card__link">Join This Group →</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- BACK LINK -->
+<section style="padding: 2rem; background: var(--cream);">
+    <div class="container">
+        <a href="{% url 'ministries' %}"
+            style="color:var(--burgundy); font-size:.88rem;
+            text-transform:uppercase; letter-spacing:.08em;">
+            ← Back to All Ministries
+        </a>
+    </div>
+</section>
+
+{% endblock %}

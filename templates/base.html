@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  {% block extra_css %}{% endblock %}
+  <title>{% block title %}Bethel Baptist Church{% endblock %}</title>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-content">
+    <div class="loader-name"></div>
+    <div class="loader-spinner">
+      <div class="spinner-ring"></div>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-logo reveal">Bethel Baptist Church</div>
+  <ul class="nav-links reveal reveal-delay-1" id="navLinks">
+    <li><a href="/">Home</a></li>
+    <li>
+      <a href="{% if is_homepage %}#about{% else %}{% url 'about' %}{% endif %}">About</a>
+    </li>
+    <li>
+      <a href="{% if is_homepage %}#sermons{% else %}{% url 'sermon_list' %}{% endif %}">Sermons</a>
+    </li>
+    <li>
+      <a href="{% if is_homepage %}#ministries{% else %}{% url 'ministries_home' %}{% endif %}">Ministries</a>
+    </li>
+    <li>
+      <a href="{% if is_homepage %}#events{% else %}{% url 'event_list' %}{% endif %}">Events</a>
+    </li>
+    <li>
+      <a href="{% if is_homepage %}#give{% else %}{% url 'give' %}{% endif %}">Give</a>
+    </li>
+    <li>
+      <a href="{% if is_homepage %}#contact{% else %}{% url 'contact' %}{% endif %}">Contact</a>
+    </li>
+    <li>
+      <a href="{% if is_homepage %}#project{% else %}{% url 'project' %}{% endif %}">Project</a>
+    </li>
+    <li>
+      <a href="{% if is_homepage %}#gallery{% else %}{% url 'gallery' %}{% endif %}">Gallery</a>
+    </li>
+  </ul>
+  <button class="nav-cta hamburger reveal reveal-delay-2" onclick="toggleNavbar()">☰</button>
+</nav>
+
+<main class="p-4">
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="reveal">
+  <div class="footer-logo">Bethel Baptist Church</div>
+  <div class="footer-links">
+    <a href="/about/">About</a>
+    <a href="/sermons/">Sermons</a>
+    <a href="/ministries/">Ministries</a>
+    <a href="/events/">Events</a>
+    <a href="/give/">Give</a>
+    <a href="/contact/">Contact</a>
+  </div>
+  <div class="footer-copy">© {% now "Y" %} Bethel Baptist Church</div>
+</footer>
+
+<script src="{% static 'js/base.js' %}"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

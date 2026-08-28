@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{%block title %}Page Not Found{% endblock %}
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">404</h1>
+        <p class="hero-subtitle">Page Not Found</p>
+        <a href="{% url 'home' %}" class="btn-primary">Return Home</a>
+    </div>
+</section>
+{% endblock %}

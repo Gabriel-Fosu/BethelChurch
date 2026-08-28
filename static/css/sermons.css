@@ -1,0 +1,387 @@
+/* ══════════════════════════════════════════════════════════════
+   SERMONS PAGE — sermons.css
+   Only styles specific to the sermons page.
+   Global styles (navbar, footer, buttons, page-hero,
+   breadcrumb, reveal) are already in base.css
+   ══════════════════════════════════════════════════════════════ */
+
+
+/* ── SERMONS SECTION WRAPPER ────────────────────────────────── */
+.sermons-section {
+    padding: 3rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+/* ── FILTER BAR ─────────────────────────────────────────────── */
+.filter-bar {
+    background: #fff;
+    border: 1px solid rgba(107, 30, 44, .1);
+    border-radius: 2px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.filter-bar input,
+.filter-bar select {
+    padding: .6rem 1rem;
+    border: 1px solid rgba(107, 30, 44, .2);
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .88rem;
+    background: var(--cream);
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color .2s;
+}
+
+.filter-bar input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-bar select {
+    min-width: 160px;
+}
+
+.filter-bar input:focus,
+.filter-bar select:focus {
+    border-color: var(--burgundy);
+}
+
+.filter-btn {
+    background: var(--burgundy);
+    color: var(--white);
+    border: none;
+    padding: .6rem 1.25rem;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .83rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    cursor: pointer;
+    transition: opacity .2s;
+}
+
+.filter-btn:hover {
+    opacity: .88;
+}
+
+.clear-btn {
+    background: transparent;
+    color: var(--burgundy);
+    border: 1.5px solid var(--burgundy);
+    padding: .6rem 1rem;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .83rem;
+    font-weight: 400;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: background .2s;
+}
+
+.clear-btn:hover {
+    background: var(--burgundy-faint);
+}
+
+
+/* ── TOOLBAR (results count + view toggle) ──────────────────── */
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.results-count {
+    font-size: .85rem;
+    color: var(--text-light);
+}
+
+.results-count strong {
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.view-toggle {
+    display: flex;
+    gap: .5rem;
+}
+
+.toggle-btn {
+    background: transparent;
+    border: 1px solid rgba(107, 30, 44, .2);
+    border-radius: 2px;
+    padding: .45rem .8rem;
+    cursor: pointer;
+    font-size: .83rem;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-mid);
+    transition: all .2s;
+}
+
+.toggle-btn.active {
+    background: var(--burgundy);
+    color: var(--white);
+    border-color: var(--burgundy);
+}
+
+.toggle-btn:hover:not(.active) {
+    background: var(--burgundy-faint);
+    border-color: var(--burgundy);
+}
+
+/* Hide list view by default */
+.hidden {
+    display: none !important;
+}
+
+
+/* ── GRID VIEW ──────────────────────────────────────────────── */
+.sermons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.sermon-card {
+    background: var(--white);
+    border: 1px solid rgba(107, 30, 44, .1);
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.sermon-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(107, 30, 44, .12);
+}
+
+.sermon-thumb {
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, var(--burgundy-dark), var(--burgundy));
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sermon-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+}
+
+.sermon-card:hover .play-btn {
+    background: rgba(255, 255, 255, .35);
+}
+
+.sermon-card-body {
+    padding: 1.25rem;
+}
+
+.sermon-scripture {
+    font-style: italic;
+    color: var(--burgundy);
+    font-size: .78rem;
+}
+
+
+/* ── LIST VIEW ──────────────────────────────────────────────── */
+.sermons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(107, 30, 44, .08);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.sermon-row {
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    transition: background .15s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.sermon-row:hover {
+    background: var(--burgundy-faint);
+}
+
+.sermon-row-thumb {
+    width: 80px;
+    height: 54px;
+    border-radius: 2px;
+    background: linear-gradient(135deg, var(--burgundy-dark), var(--burgundy));
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: .9rem;
+    padding-left: 2px;
+}
+
+.sermon-row-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.sermon-row-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: .25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-dark);
+}
+
+.sermon-row-meta {
+    font-size: .78rem;
+    color: var(--text-light);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.sermon-row-series {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--burgundy);
+    background: var(--burgundy-faint);
+    padding: .2rem .6rem;
+    border-radius: 2px;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.sermon-row-scripture {
+    font-size: .78rem;
+    font-style: italic;
+    color: var(--text-mid);
+    text-align: right;
+    white-space: nowrap;
+    margin-left: auto;
+}
+
+
+/* ── NO RESULTS ─────────────────────────────────────────────── */
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-light);
+}
+
+.no-results p {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+
+/* ── PAGINATION ─────────────────────────────────────────────── */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    margin-top: 3rem;
+}
+
+.page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(107, 30, 44, .2);
+    border-radius: 2px;
+    font-size: .88rem;
+    color: var(--burgundy);
+    background: var(--white);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background .15s, color .15s;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.page-btn.active {
+    background: var(--burgundy);
+    color: var(--white);
+    border-color: var(--burgundy);
+}
+
+.page-btn:hover:not(.active) {
+    background: var(--burgundy-faint);
+}
+
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .sermons-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .sermons-section {
+        padding: 2rem 1.25rem;
+    }
+
+    .sermons-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-bar input,
+    .filter-bar select,
+    .filter-btn,
+    .clear-btn {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .sermon-row {
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .sermon-row-scripture {
+        margin-left: 0;
+        text-align: left;
+    }
+
+    .sermon-row-series {
+        order: -1;
+    }
+}

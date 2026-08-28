@@ -1,0 +1,200 @@
+/* ── CONTACT INFO BAR ───────────────────────────────────────── */
+.contact-info-bar {
+    background: var(--gold);
+    padding-top: 5rem;
+    padding-left: 2rem;
+    padding-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.contact-info-icon {
+    font-size: 1.2rem;
+}
+
+.contact-info-label {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--burgundy-dark);
+    font-weight: 500;
+}
+
+.contact-info-value {
+    font-size: .9rem;
+    color: var(--burgundy-dark);
+    font-weight: 500;
+}
+
+
+/* ── CONTACT SECTION ────────────────────────────────────────── */
+.contact-section {
+    padding: 4rem 2rem;
+    background: var(--cream);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-bottom: 3rem;
+}
+
+
+/* ── CONTACT FORM ───────────────────────────────────────────── */
+.contact-form-wrapper h2 {
+    margin-bottom: .5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+
+/* ── CONTACT CARDS (right side) ─────────────────────────────── */
+.contact-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-card {
+    background: #fff;
+    border: 1px solid rgba(107, 30, 44, .1);
+    border-radius: 2px;
+    padding: 1.5rem;
+}
+
+.contact-card__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--burgundy);
+    margin-bottom: 1.25rem;
+}
+
+
+/* ── SERVICE TIMES ──────────────────────────────────────────── */
+.service-time-list {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+}
+
+.service-time-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: .88rem;
+}
+
+.service-time-name {
+    color: var(--text-mid);
+}
+
+.service-time-value {
+    color: var(--burgundy);
+    font-weight: 500;
+}
+
+.service-time-divider {
+    height: 1px;
+    background: rgba(107, 30, 44, .1);
+    margin: 1rem 0;
+}
+
+
+/* ── SOCIAL LINKS ───────────────────────────────────────────── */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    text-decoration: none;
+    color: inherit;
+    padding: .6rem;
+    border-radius: 2px;
+    transition: background .15s;
+}
+
+.social-link:hover {
+    background: var(--burgundy-faint);
+}
+
+.social-icon {
+    font-size: 1.3rem;
+    width: 36px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.social-name {
+    font-size: .88rem;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.social-handle {
+    font-size: .78rem;
+    color: var(--text-light);
+}
+
+
+/* ── GOOGLE MAP ─────────────────────────────────────────────── */
+.map-wrapper {
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid rgba(107, 30, 44, .1);
+}
+
+.map-wrapper iframe {
+    display: block;
+}
+
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-info-bar {
+        flex-direction: column;
+        gap: 1.25rem;
+        align-items: flex-start;
+        padding: 1.25rem 1.5rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-section {
+        padding: 2.5rem 1.25rem;
+    }
+}

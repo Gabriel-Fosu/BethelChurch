@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ministries — Bethel Baptist Church{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/ministries.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero reveal">
+    <svg class="hero-cross" viewBox="0 0 200 200" fill="none">
+        <rect x="85" y="10" width="30" height="180" fill="white"/>
+        <rect x="20" y="60" width="160" height="30" fill="white"/>
+    </svg>
+    <div class="hero-content reveal reveal-delay-2">
+        <span class="hero-eyebrow">Get Involved</span>
+        <h1 class="hero-title">Our <em>Ministries</em></h1>
+        <p class="hero-subtitle">
+            Find your place in the Bethel family. Whether you are
+            young or old, new or long-standing — there is a ministry
+            for you.
+        </p>
+    </div>
+</section>
+
+<!-- MINISTRIES LIST -->
+<section style="padding: 4rem 2rem; background: var(--cream);">
+    <div class="container">
+
+        {% for ministry in ministries %}
+        <a href="{% url 'ministry_detail' ministry.slug %}"
+            class="ministry-list-item reveal">
+
+            <!-- IMAGE / ICON SIDE -->
+            <div class="ministry-list-item__image">
+                {% if ministry.image %}
+                <img src="{{ ministry.image.url }}" alt="{{ ministry.get_type_display }}">
+                {% else %}
+                <div class="ministry-list-item__placeholder">
+                    <span class="ministry-list-item__icon">
+                        {{ ministry.icon }}
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- CONTENT SIDE -->
+            <div class="ministry-list-item__content">
+                <div class="ministry-list-item__number">
+                    0{{ forloop.counter }}
+                </div>
+                <h2 class="ministry-list-item__title">
+                    {{ ministry.get_type_display }}
+                </h2>
+                {% if ministry.leader %}
+                <p class="ministry-list-item__leader">
+                    Led by {{ ministry.leader }}
+                </p>
+                {% endif %}
+                <p class="ministry-list-item__desc">
+                    {{ ministry.description|truncatewords:40 }}
+                </p>
+                <span class="ministry-list-item__link">
+                    Learn More →
+                </span>
+            </div>
+
+        </a>
+        {% empty %}
+        <p style="text-align:center; color:var(--text-light); padding:4rem 0;">
+            No ministries found. Check back soon.
+        </p>
+        {% endfor %}
+
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section style="background: var(--burgundy-dark); padding: 4rem 2rem; text-align:center;">
+    <div class="container">
+        <span class="section-label" style="color:var(--gold-light);">
+            Not Sure Where to Start?
+        </span>
+        <h2 style="color:#fff; font-family:'Cormorant Garamond',serif;
+            font-size:clamp(1.8rem,4vw,2.8rem); font-weight:300; margin-bottom:1rem;">
+            Come as You Are
+        </h2>
+        <p style="color:rgba(255,255,255,.7); max-width:500px;
+            margin:0 auto 2rem; line-height:1.8;">
+            You do not have to have it all figured out. Just show up
+            and we will help you find where you belong.
+        </p>
+        <a href="{% url 'contact' %}" class="btn-primary"
+            style="display:inline-block;">
+            Get In Touch
+        </a>
+    </div>
+</section>
+
+{% endblock %}
