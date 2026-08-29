@@ -18,3 +18,5 @@ media/
 Thumbs.db
 
 staticfiles/
+
+data.json
