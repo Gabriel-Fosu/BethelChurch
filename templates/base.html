@@ -25,28 +25,28 @@
   <ul class="nav-links reveal reveal-delay-1" id="navLinks">
     <li><a href="/">Home</a></li>
     <li>
-      <a href="{% if is_homepage %}#about{% else %}{% url 'about' %}{% endif %}">About</a>
+      <a href="/about/">About</a>
     </li>
     <li>
-      <a href="{% if is_homepage %}#sermons{% else %}{% url 'sermon_list' %}{% endif %}">Sermons</a>
+      <a href="/sermon_list/">Sermons</a>
     </li>
     <li>
-      <a href="{% if is_homepage %}#ministries{% else %}{% url 'ministries_home' %}{% endif %}">Ministries</a>
+      <a href="/ministries_home/">Ministries</a>
     </li>
     <li>
-      <a href="{% if is_homepage %}#events{% else %}{% url 'event_list' %}{% endif %}">Events</a>
+      <a href="/event_list/">Events</a>
     </li>
     <li>
-      <a href="{% if is_homepage %}#give{% else %}{% url 'give' %}{% endif %}">Give</a>
+      <a href="/give/">Give</a>
     </li>
     <li>
-      <a href="{% if is_homepage %}#contact{% else %}{% url 'contact' %}{% endif %}">Contact</a>
+      <a href="/contact/">Contact</a>
     </li>
     <li>
-      <a href="{% if is_homepage %}#project{% else %}{% url 'project' %}{% endif %}">Project</a>
+      <a href="/project/">Project</a>
     </li>
     <li>
-      <a href="{% if is_homepage %}#gallery{% else %}{% url 'gallery' %}{% endif %}">Gallery</a>
+      <a href="/gallery/">Gallery</a>
     </li>
   </ul>
   <button class="nav-cta hamburger reveal reveal-delay-2" onclick="toggleNavbar()">☰</button>
@@ -68,9 +68,9 @@
   <div class="footer-logo">Bethel Baptist Church</div>
   <div class="footer-links">
     <a href="/about/">About</a>
-    <a href="/sermons/">Sermons</a>
-    <a href="/ministries/">Ministries</a>
-    <a href="/events/">Events</a>
+    <a href="/sermon_list/">Sermons</a>
+    <a href="/ministries_home/">Ministries</a>
+    <a href="/event_list/">Events</a>
     <a href="/give/">Give</a>
     <a href="/contact/">Contact</a>
   </div>
