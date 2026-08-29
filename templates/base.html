@@ -28,25 +28,25 @@
       <a href="/about/">About</a>
     </li>
     <li>
-      <a href="/sermon_list/">Sermons</a>
+      <a href="{% url 'sermon_list' %}">Sermons</a>
     </li>
     <li>
-      <a href="/ministries_home/">Ministries</a>
+      <a href="{% url 'ministries_home' %}">Ministries</a>
     </li>
     <li>
-      <a href="/event_list/">Events</a>
+      <a href="{% url 'event_list' %}">Events</a>
     </li>
     <li>
-      <a href="/give/">Give</a>
+      <a href="{% url 'give' %}">Give</a>
     </li>
     <li>
       <a href="/contact/">Contact</a>
     </li>
     <li>
-      <a href="/project/">Project</a>
+      <a href="{% url 'project' %}">Project</a>
     </li>
     <li>
-      <a href="/gallery/">Gallery</a>
+      <a href="{% url 'gallery' %}">Gallery</a>
     </li>
   </ul>
   <button class="nav-cta hamburger reveal reveal-delay-2" onclick="toggleNavbar()">☰</button>
@@ -68,9 +68,9 @@
   <div class="footer-logo">Bethel Baptist Church</div>
   <div class="footer-links">
     <a href="/about/">About</a>
-    <a href="/sermon_list/">Sermons</a>
-    <a href="/ministries_home/">Ministries</a>
-    <a href="/event_list/">Events</a>
+    <a href="/sermons/">Sermons</a>
+    <a href="/ministries/">Ministries</a>
+    <a href="/events/">Events</a>
     <a href="/give/">Give</a>
     <a href="/contact/">Contact</a>
   </div>
