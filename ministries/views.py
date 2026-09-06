@@ -8,7 +8,7 @@ from .models import Ministry, SmallGroup, GroupInterest
 def ministries_home(request):
     ministries = Ministry.objects.all()
 
-    return render(request, 'ministries/ministries.html', {
+    return render(request, 'ministries/ministries_home.html', {
         'ministries': ministries,
         'is_homepage': False
     })

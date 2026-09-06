@@ -1,0 +1,295 @@
+/* ══════════════════════════════════════════════════════════════
+   VISIT PAGE — visit.css
+   ══════════════════════════════════════════════════════════════ */
+
+
+/* ── SERVICE TIMES BAR ──────────────────────────────────────── */
+.visit-times {
+    background: var(--gold);
+    padding: 1.25rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.visit-time-item {
+    text-align: center;
+}
+
+.visit-time-label {
+    font-size: .68rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--burgundy-dark);
+    font-weight: 600;
+    display: block;
+    margin-bottom: .2rem;
+}
+
+.visit-time-value {
+    font-size: .92rem;
+    font-weight: 500;
+    color: var(--burgundy-dark);
+    display: block;
+}
+
+.visit-time-divider {
+    font-size: 1.5rem;
+    color: var(--burgundy-dark);
+    opacity: .3;
+}
+
+
+/* ── MAIN GRID ──────────────────────────────────────────────── */
+.visit-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+
+/* ── WHAT TO EXPECT CARDS ───────────────────────────────────── */
+.expect-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.expect-card {
+    display: flex;
+    align-items: flex-start;
+    gap: .875rem;
+    padding: 1.25rem;
+    background: var(--white);
+    border: 1px solid rgba(107, 30, 44, .08);
+    border-radius: 2px;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.expect-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(107, 30, 44, .1);
+}
+
+.expect-card__icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    width: 36px;
+    text-align: center;
+}
+
+.expect-card__title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: .92rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: .3rem;
+}
+
+.expect-card__desc {
+    font-size: .83rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+    margin-bottom: 0;
+}
+
+
+/* ── FAQ ACCORDION ──────────────────────────────────────────── */
+.faq-list {
+    margin-top: 1.5rem;
+    border: 1px solid rgba(107, 30, 44, .1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(107, 30, 44, .08);
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-question {
+    width: 100%;
+    background: var(--white);
+    border: none;
+    padding: 1.1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .92rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    cursor: pointer;
+    text-align: left;
+    transition: background .15s ease;
+}
+
+.faq-question:hover {
+    background: var(--burgundy-faint);
+}
+
+.faq-item.open .faq-question {
+    background: var(--burgundy-faint);
+    color: var(--burgundy);
+}
+
+.faq-icon {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--burgundy);
+    flex-shrink: 0;
+    transition: transform .25s ease;
+}
+
+.faq-item.open .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease;
+}
+
+.faq-answer p {
+    padding: 1rem 1.5rem 1.25rem;
+    font-size: .88rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+    border-top: 1px solid rgba(107, 30, 44, .06);
+    margin-bottom: 0;
+}
+
+
+/* ── VISIT FORM CARD ────────────────────────────────────────── */
+.visit-form-card {
+    background: var(--white);
+    border: 1px solid rgba(107, 30, 44, .1);
+    border-radius: 3px;
+    overflow: hidden;
+    position: sticky;
+    top: calc(var(--nav-height) + 1.5rem);
+}
+
+.visit-form-header {
+    background: linear-gradient(135deg, var(--burgundy-dark), var(--burgundy));
+    padding: 2rem;
+    text-align: center;
+}
+
+.visit-form-icon {
+    font-size: 2rem;
+    color: var(--gold);
+    display: block;
+    margin-bottom: .75rem;
+}
+
+.visit-form-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: white;
+    margin-bottom: .5rem;
+}
+
+.visit-form-header p {
+    font-size: .85rem;
+    color: rgba(255, 255, 255, .68);
+    line-height: 1.65;
+    margin-bottom: 0;
+}
+
+/* form fields inside the card */
+.visit-form-card form {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+/* ── CHECKBOX ───────────────────────────────────────────────── */
+.form-group--checkbox {
+    margin-bottom: 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    cursor: pointer;
+    font-size: .88rem;
+    color: var(--text-mid);
+    user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-custom {
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid rgba(107, 30, 44, .25);
+    border-radius: 2px;
+    background: var(--cream);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .15s ease, border-color .15s ease;
+}
+
+.checkbox-label input:checked + .checkbox-custom {
+    background: var(--burgundy);
+    border-color: var(--burgundy);
+}
+
+.checkbox-label input:checked + .checkbox-custom::after {
+    content: '✓';
+    color: white;
+    font-size: .75rem;
+    font-weight: 600;
+}
+
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .visit-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .visit-form-card {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .visit-times {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+        padding: 1.25rem 1.5rem;
+    }
+
+    .visit-time-divider {
+        display: none;
+    }
+
+    .expect-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .visit-form-card form {
+        padding: 1.25rem;
+    }
+}

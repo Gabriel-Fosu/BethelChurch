@@ -31,3 +31,36 @@ class SiteSettings(models.Model):
     class Meta:
         verbose_name = 'Site Settings'
         verbose_name_plural = 'Site Settings'
+
+class PlannedVisit(models.Model):
+    HEAR_CHOICES = [
+        ('friend', 'Friend or Family'),
+        ('social', 'Social Media'),
+        ('flyer', 'Flyer or Poster'),
+        ('walked', 'Walked Past the Church'),
+        ('other', 'Other'),
+    ]
+
+    #visitor details
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20, blank=True)
+
+    #visit details
+    visit_date = models.DateTimeField(help_text='Which Sunday are you planning to visit?')
+    group_size = models.PositiveIntegerField(default=1, help_text='How many people are coming?')
+    has_children = models.BooleanField(default=False, help_text='Is there any children?')
+    how_heard = models.CharField(max_length=10, choices=HEAR_CHOICES, default='friend')
+    questions = models.TextField(blank=True, help_text='Any questions  before you visit?')
+
+    #metadata
+    submitted_at = models.DateTimeField(auto_now_add=True)
+    is_contacted = models.BooleanField(default=False, help_text='Has the team followed up?')
+
+    def __str__(self):
+        return f'{self.name} — {self.visit_date}'
+
+    class Meta:
+        ordering = ['-submitted_at']
+        verbose_name = 'Planned Visit'
+        verbose_name_plural = 'Planned Visits'

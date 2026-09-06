@@ -1,10 +1,391 @@
 {% extends 'base.html' %}
-{% block title %}Plan a Vist  Bethel Baptist Church{% endblock %}
+{% load static %}
+
+{% block title %}Plan a Visit — Bethel Baptist Church{% endblock %}
+{% block meta_description %}Planning to visit Bethel Baptist Church? Find out what to expect, service times, dress code and parking information.{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/visit.css' %}">
+{% endblock %}
+
 {% block content %}
-<section class="hero">
-    <div class="hero-content">
-      <h1 class="hero-title">Plan Your <em>Vist</em></h1>
-      <p class="hero-subtitle">Coming soon...</p>
+
+<!-- HERO -->
+<section class="hero reveal">
+    <svg class="hero-cross" viewBox="0 0 200 200" fill="none">
+        <rect x="85" y="10" width="30" height="180" fill="white"/>
+        <rect x="20" y="60" width="160" height="30" fill="white"/>
+    </svg>
+    <div class="hero-content reveal reveal-delay-2">
+        <span class="hero-eyebrow">First Time?</span>
+        <h1 class="hero-title">Plan Your <em>Visit</em></h1>
+        <p class="hero-subtitle">
+            We would love to welcome you this Sunday. Here is
+            everything you need to know before you arrive.
+        </p>
     </div>
 </section>
+
+<!-- SERVICE TIMES -->
+<div class="visit-times reveal">
+    <div class="visit-time-item">
+        <span class="visit-time-label">First Service</span>
+        <span class="visit-time-value">8:00 AM</span>
+    </div>
+    <div class="visit-time-divider">·</div>
+    <div class="visit-time-item">
+        <span class="visit-time-label">Sunday School Service</span>
+        <span class="visit-time-value">10:00 AM</span>
+    </div>
+    <div class="visit-time-divider">·</div>
+    <div class="visit-time-item">
+        <span class="visit-time-label">Location</span>
+        <span class="visit-time-value">12 Liberation Road, Accra</span>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<section style="padding: 4rem 2rem; background: var(--cream);">
+    <div class="container">
+        <div class="visit-grid">
+
+            <!-- LEFT — What to Expect + FAQ -->
+            <div>
+
+                <!-- What to Expect -->
+                <div class="reveal">
+                    <span class="section-label">Before You Arrive</span>
+                    <h2 class="section-title">What to <em>Expect</em></h2>
+                    <p style="color:var(--text-mid); line-height:1.85; margin-bottom:2rem;">
+                        Whether this is your first time in a church or you
+                        are returning after a long break — you are in the
+                        right place. Here is what a typical Sunday looks like
+                        at Bethel Baptist Church.
+                    </p>
+                </div>
+
+                <!-- Expect Cards -->
+                <div class="expect-cards">
+                    <div class="expect-card reveal reveal-delay-1">
+                        <div class="expect-card__icon">🤝</div>
+                        <div>
+                            <h3 class="expect-card__title">Warm Welcome</h3>
+                            <p class="expect-card__desc">
+                                Our welcome team will greet you at the door,
+                                help you find a seat and answer any questions
+                                you have.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="expect-card reveal reveal-delay-2">
+                        <div class="expect-card__icon">🎵</div>
+                        <div>
+                            <h3 class="expect-card__title">Worship</h3>
+                            <p class="expect-card__desc">
+                                We open with 20–25 minutes of contemporary
+                                worship music — a mix of modern and
+                                traditional hymns.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="expect-card reveal reveal-delay-3">
+                        <div class="expect-card__icon">📖</div>
+                        <div>
+                            <h3 class="expect-card__title">Message</h3>
+                            <p class="expect-card__desc">
+                                A practical, Bible-based sermon of about
+                                35–40 minutes. Relevant, engaging and always
+                                grounded in Scripture.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="expect-card reveal reveal-delay-4">
+                        <div class="expect-card__icon">☕</div>
+                        <div>
+                            <h3 class="expect-card__title">Fellowship</h3>
+                            <p class="expect-card__desc">
+                                After service we gather for refreshments.
+                                A great opportunity to meet people and feel
+                                at home.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="expect-card reveal">
+                        <div class="expect-card__icon">👔</div>
+                        <div>
+                            <h3 class="expect-card__title">Dress Code</h3>
+                            <p class="expect-card__desc">
+                                Smart casual — come as you are. We want you
+                                to feel comfortable. No strict dress code
+                                applies.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="expect-card reveal reveal-delay-1">
+                        <div class="expect-card__icon">🅿️</div>
+                        <div>
+                            <h3 class="expect-card__title">Parking</h3>
+                            <p class="expect-card__desc">
+                                Free parking is available on the church
+                                grounds. Additional street parking is
+                                available nearby.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="expect-card reveal reveal-delay-2">
+                        <div class="expect-card__icon">👶</div>
+                        <div>
+                            <h3 class="expect-card__title">Children</h3>
+                            <p class="expect-card__desc">
+                                We have a safe, fun children's programme
+                                running during every service for ages 0–12.
+                                Your children are always welcome.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="expect-card reveal reveal-delay-3">
+                        <div class="expect-card__icon">⏱</div>
+                        <div>
+                            <h3 class="expect-card__title">Duration</h3>
+                            <p class="expect-card__desc">
+                                Each service runs for approximately
+                                90 minutes. We recommend arriving
+                                10 minutes early.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ -->
+                <div style="margin-top:3.5rem;" class="reveal">
+                    <span class="section-label">Common Questions</span>
+                    <h2 class="section-title">FAQ</h2>
+
+                    <div class="faq-list">
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                Do I need to book before visiting?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>
+                                    No booking is required — you are always
+                                    welcome to just show up. However filling
+                                    in the form on this page helps us prepare
+                                    a personal welcome for you.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                Is there a specific service for first-timers?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>
+                                    All three Sunday services are identical
+                                    in content. We recommend the 10:00 AM
+                                    service for first-timers as it tends to
+                                    have the most balanced atmosphere.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                What if I am not a Christian?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>
+                                    You are absolutely welcome regardless of
+                                    where you are on your spiritual journey.
+                                    Many of our members came to us curious,
+                                    doubting or simply searching. There is
+                                    no pressure — come and see.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                Can I bring my whole family?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>
+                                    Absolutely. We have programmes for every
+                                    age — children's ministry for ages 0–12,
+                                    youth ministry for teenagers, and the
+                                    main service for adults. The whole family
+                                    is warmly welcome.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                Will I be asked to give money?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>
+                                    We take an offering during service but
+                                    it is entirely voluntary. As a first-time
+                                    visitor you are our guest — please do not
+                                    feel any obligation.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                What is the address and how do I get there?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>
+                                    We are located at 12 Liberation Road,
+                                    Accra, Ghana. You can find us on Google
+                                    Maps by searching "Bethel Baptist Church
+                                    Accra". Free parking is available on
+                                    the church grounds.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT — Visit Form -->
+            <div>
+                <div class="visit-form-card reveal reveal-delay-2">
+                    <div class="visit-form-header">
+                        <span class="visit-form-icon">✝</span>
+                        <h3>Let Us Know You Are Coming</h3>
+                        <p>
+                            Fill in this form and our welcome team will
+                            look out for you personally on Sunday.
+                        </p>
+                    </div>
+
+                    <form method="POST" action="{% url 'visit' %}">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" name="name"
+                                class="form-input"
+                                placeholder="Kofi Asante" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" name="email"
+                                class="form-input"
+                                placeholder="kofi@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" name="phone"
+                                class="form-input"
+                                placeholder="+233 50 000 0000">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Visit Date *</label>
+                            <input type="date" name="visit_date"
+                                class="form-input" required
+                                min="{{ today }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">How Many People?</label>
+                            <select name="group_size" class="form-input">
+                                <option value="1">Just me</option>
+                                <option value="2">2 people</option>
+                                <option value="3">3 people</option>
+                                <option value="4">4 people</option>
+                                <option value="5">5 or more</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group form-group--checkbox">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="has_children">
+                                <span class="checkbox-custom"></span>
+                                I am bringing children
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">How Did You Hear About Us?</label>
+                            <select name="how_heard" class="form-input">
+                                <option value="">Select an option...</option>
+                                <option value="friend">Friend or Family</option>
+                                <option value="social">Social Media</option>
+                                <option value="google">Google Search</option>
+                                <option value="flyer">Flyer or Poster</option>
+                                <option value="walked">Walked Past the Church</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Any Questions Before You Visit?</label>
+                            <textarea name="questions"
+                                class="form-input form-textarea"
+                                placeholder="Ask us anything..."></textarea>
+                        </div>
+
+                        <button type="submit" class="form-submit">
+                            Let Us Know You Are Coming →
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// ── FAQ ACCORDION ────────────────────────────────────────────
+function toggleFaq(button) {
+    const item   = button.closest('.faq-item');
+    const answer = item.querySelector('.faq-answer');
+    const icon   = button.querySelector('.faq-icon');
+    const isOpen = item.classList.contains('open');
+
+    // close all others
+    document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+        openItem.classList.remove('open');
+        openItem.querySelector('.faq-answer').style.maxHeight = '0';
+        openItem.querySelector('.faq-icon').textContent = '+';
+    });
+
+    // open this one if it was closed
+    if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        icon.textContent = '−';
+    }
+}
+</script>
 {% endblock %}
