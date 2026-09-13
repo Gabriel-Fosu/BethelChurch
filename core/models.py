@@ -25,6 +25,18 @@ class SiteSettings(models.Model):
     whatsapp_number = models.CharField(max_length=20, blank=True)
     live_stream_url = models.URLField(blank=True)
 
+    # homepage images
+    about_image = models.ImageField(
+        upload_to='site/',
+        blank=True,
+        help_text='Congregation photo shown on homepage about section'
+    )
+    hero_image = models.ImageField(
+        upload_to='site/',
+        blank=True,
+        help_text='Optional background image for hero section'
+    )
+
     def __str__(self):
         return 'Site Settings'
 

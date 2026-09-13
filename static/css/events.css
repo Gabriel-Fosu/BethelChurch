@@ -31,6 +31,29 @@
     border-color: var(--burgundy);
 }
 
+.event-banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.bg-image {
+    position: absolute;
+    max-width: 100%;
+    height: auto;
+    z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /* ── EVENT LIST CARD ────────────────────────────────────────── */
 .events-container {
