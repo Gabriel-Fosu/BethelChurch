@@ -12,17 +12,6 @@
 {% if event.image %}
 <div class="event-banner">
     <img src="{{ event.image.url }}" alt="{{ event.title }}" class="bg-image">
-    <div class="hero-content reveal reveal-delay-2">
-        {% if event.category %}
-        <span class="hero-eyebrow">{{ event.category.name }}</span>
-        {% endif %}
-        <h1 class="hero-title">{{ event.title }}</h1>
-        <p class="hero-subtitle">
-            {{ event.date|date:"l, F j, Y" }}
-            &nbsp;·&nbsp;
-            {{ event.date|date:"g:i A" }}
-        </p>
-    </div>
 </div>
 
 {% else %}
