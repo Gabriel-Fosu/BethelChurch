@@ -9,7 +9,7 @@ urlpatterns = [
     path('live/', views.live, name='live'),
 #    path('ministries/', views.ministries, name='ministries'),
     path('project/', views.project, name='project'),
-    path('gallery/', views.gallery, name='gallery'),
+    #path('gallery/', views.gallery, name='gallery'),
     path('error404/', views.error_404, name='error_404'),
     path('error500/', views.error_500, name='error_500'),
 ]

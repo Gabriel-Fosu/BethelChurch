@@ -1,0 +1,40 @@
+{% if item.type == 'photo' and item.image %}
+
+<div class="gallery-item reveal"
+    onclick="openLightbox('{{ item.image.url }}', '{{ item.title|escapejs }}', '{{ item.description|escapejs }}')">
+    <div class="gallery-item__thumb">
+        <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
+        <div class="gallery-item__overlay">
+            <span class="gallery-item__icon">🔍</span>
+            <span class="gallery-item__label">{{ item.title }}</span>
+        </div>
+        {% if item.is_featured %}
+        <span class="gallery-item__featured">Featured</span>
+        {% endif %}
+    </div>
+</div>
+
+{% elif item.type == 'video' and item.video_url %}
+
+<div class="gallery-item gallery-item--video reveal"
+    onclick="openVideoModal('{{ item.video_url|escapejs }}', '{{ item.title|escapejs }}', '{{ item.description|escapejs }}')">
+    <div class="gallery-item__thumb gallery-item__thumb--video">
+        {% if item.image %}
+            <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
+        {% else %}
+            <div class="gallery-item__video-placeholder"></div>
+        {% endif %}
+        <div class="gallery-item__overlay">
+            <div class="video-play-btn">
+                <div class="video-play-icon"></div>
+            </div>
+            <span class="gallery-item__label">{{ item.title }}</span>
+        </div>
+        <span class="video-badge">▶ Video</span>
+        {% if item.is_featured %}
+        <span class="gallery-item__featured">Featured</span>
+        {% endif %}
+    </div>
+</div>
+
+{% endif %}

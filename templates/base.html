@@ -19,39 +19,33 @@
     </div>
   </div>
 </div>
-
-<nav>
+<header>
   <div class="nav-logo reveal">Bethel Baptist Church</div>
-  <ul class="nav-links reveal reveal-delay-1" id="navLinks">
-    <li><a href="/">Home</a></li>
-    <li>
+  <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+  <label for="menu-toggle" class="menu-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+  <nav class="nav-links reveal reveal-delay-1" id="navLinks">
+    <a href="/">Home</a>
+    <div class="dropdown">
       <a href="/about/">About</a>
-    </li>
-    <li>
-      <a href="{% url 'sermon_list' %}">Sermons</a>
-    </li>
-    <li>
-      <a href="{% url 'ministries_home' %}">Ministries</a>
-    </li>
-    <li>
-      <a href="{% url 'event_list' %}">Events</a>
-    </li>
-    <li>
-      <a href="{% url 'give' %}">Give</a>
-    </li>
-    <li>
-      <a href="/contact/">Contact</a>
-    </li>
-    <li>
-      <a href="{% url 'project' %}">Project</a>
-    </li>
-    <li>
-      <a href="{% url 'gallery' %}">Gallery</a>
-    </li>
-  </ul>
-  <button class="nav-cta hamburger reveal reveal-delay-2" onclick="toggleNavbar()">☰</button>
-</nav>
-
+      <div class="dropdown-menu">
+        <a href="#history">Who We Are</a>
+        <a href="#team">Meet Our Leadership</a>
+        <a href="#"></a>
+      </div>
+    </div>
+    <a href="{% url 'sermon_list' %}">Sermons</a>
+    <a href="{% url 'ministries_home' %}">Ministries</a>
+    <a href="{% url 'event_list' %}">Events</a>
+    <a href="{% url 'give' %}">Give</a>
+    <a href="/contact/">Contact</a>
+    <a href="{% url 'project' %}">Project</a>
+    <a href="{% url 'gallery' %}">Gallery</a>
+  </nav>
+</header>
 <main class="p-4">
   {% if messages %}
     <ul class="messages">

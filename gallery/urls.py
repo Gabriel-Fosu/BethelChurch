@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     path('', views.gallery, name='gallery'),
-    path('<slug:category_slug>/', views.gallery_category, name='gallery_category'),
+    #path('<slug:category_slug>/', views.gallery_category, name='gallery_category'),
 ]

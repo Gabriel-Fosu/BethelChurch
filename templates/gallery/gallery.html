@@ -1,10 +1,197 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block title %}Gallery — Bethel Baptist Church{% endblock %}
+{% block meta_description %}Photos and videos from Bethel Baptist Church — Sunday services, events, outreach and community life.{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+{% endblock %}
+
 {% block content %}
-<section class="hero">
-    <div class="hero-content">
-        <h1 class="hero-title">Photo <em>Gallery</em></h1>
-        <p class="hero-subtitle">Coming soon.</p>
+
+<!-- HERO -->
+<section class="hero reveal">
+    <svg class="hero-cross" viewBox="0 0 200 200" fill="none">
+        <rect x="85" y="10" width="30" height="180" fill="white"/>
+        <rect x="20" y="60" width="160" height="30" fill="white"/>
+    </svg>
+    <div class="hero-content reveal reveal-delay-2">
+        <span class="hero-eyebrow">Life at Bethel</span>
+        <h1 class="hero-title">Our <em>Gallery</em></h1>
+        <p class="hero-subtitle">
+            Glimpses of worship, community, outreach and life
+            together at Bethel Baptist Church.
+        </p>
     </div>
 </section>
+
+<!-- TYPE FILTER -->
+<div class="gallery-filters reveal">
+    <div class="container">
+        <div class="gallery-filters-inner">
+            <a href="?" class="filter-btn {% if not active_type %}active{% endif %}">
+                All
+            </a>
+            <a href="?type=photo" class="filter-btn {% if active_type == 'photo' %}active{% endif %}">
+                📷 Photos
+            </a>
+            <a href="?type=video" class="filter-btn {% if active_type == 'video' %}active{% endif %}">
+                🎬 Videos
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- GALLERY GROUPED BY CATEGORY -->
+<div class="gallery-section">
+    <div class="container">
+
+        {% if category_data or uncategorised %}
+
+            <!-- Each category as its own section -->
+            {% for group in category_data %}
+            <div class="gallery-group reveal">
+
+                <!-- Category heading -->
+                <div class="gallery-group__header">
+                    <h2 class="gallery-group__title">{{ group.category.name }}</h2>
+                    <span class="gallery-group__count">
+                        {{ group.items|length }} item{{ group.items|length|pluralize }}
+                    </span>
+                    <div class="gallery-group__line"></div>
+                </div>
+
+                <!-- Items grid -->
+                <div class="gallery-grid">
+                    {% for item in group.items %}
+                        {% include 'gallery/partials/gallery_item.html' %}
+                    {% endfor %}
+                </div>
+
+            </div>
+            {% endfor %}
+
+            <!-- Uncategorised items -->
+            {% if uncategorised %}
+            <div class="gallery-group reveal">
+                <div class="gallery-group__header">
+                    <h2 class="gallery-group__title">Other</h2>
+                    <span class="gallery-group__count">
+                        {{ uncategorised|length }} item{{ uncategorised|length|pluralize }}
+                    </span>
+                    <div class="gallery-group__line"></div>
+                </div>
+                <div class="gallery-grid">
+                    {% for item in uncategorised %}
+                        {% include 'gallery/partials/gallery_item.html' %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+        {% else %}
+
+        <!-- EMPTY STATE -->
+        <div class="gallery-empty reveal">
+            <div class="gallery-empty__icon">📷</div>
+            <h3>No items yet</h3>
+            <p>
+                {% if active_type %}
+                    No {{ active_type }}s match your filter.
+                    <a href="?" style="color:var(--burgundy);">Clear filter</a>
+                {% else %}
+                    Gallery photos and videos will appear here once uploaded.
+                {% endif %}
+            </p>
+        </div>
+
+        {% endif %}
+
+    </div>
+</div>
+
+<!-- PHOTO LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox__close" onclick="closeLightbox()">✕</button>
+    <div class="lightbox__content">
+        <img src="" alt="" id="lightboxImg" class="lightbox__img">
+        <div class="lightbox__info">
+            <h3 id="lightboxTitle" class="lightbox__title"></h3>
+            <p id="lightboxDesc" class="lightbox__desc"></p>
+        </div>
+    </div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal" onclick="closeVideoModal(event)">
+    <button class="lightbox__close" onclick="closeVideoModal()">✕</button>
+    <div class="video-modal__content">
+        <h3 id="videoModalTitle" class="video-modal__title"></h3>
+        <div class="video-modal__frame" id="videoFrame"></div>
+        <p id="videoModalDesc" class="video-modal__desc"></p>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// ── LIGHTBOX ────────────────────────────────────────────────
+function openLightbox(src, title, desc) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightboxTitle').textContent = title;
+    document.getElementById('lightboxDesc').textContent  = desc;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(event) {
+    if (event && !event.target.classList.contains('lightbox') &&
+        !event.target.classList.contains('lightbox__close')) return;
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// ── VIDEO MODAL ─────────────────────────────────────────────
+function openVideoModal(url, title, desc) {
+    document.getElementById('videoModalTitle').textContent = title;
+    document.getElementById('videoModalDesc').textContent  = desc;
+
+    // convert any YouTube URL format to embed
+    let embedUrl = url;
+    if (url.includes('youtube.com/watch')) {
+        const videoId = new URL(url).searchParams.get('v');
+        embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+    } else if (url.includes('youtu.be/')) {
+        const videoId = url.split('youtu.be/')[1].split('?')[0];
+        embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+    }
+
+    document.getElementById('videoFrame').innerHTML =
+        '<iframe src="' + embedUrl + '" frameborder="0" allowfullscreen ' +
+        'allow="autoplay; encrypted-media" ' +
+        'style="width:100%; aspect-ratio:16/9; border-radius:2px; display:block;"></iframe>';
+
+    document.getElementById('videoModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeVideoModal(event) {
+    if (event && !event.target.classList.contains('video-modal') &&
+        !event.target.classList.contains('lightbox__close')) return;
+    document.getElementById('videoModal').classList.remove('active');
+    document.getElementById('videoFrame').innerHTML = '';
+    document.body.style.overflow = '';
+}
+
+// close on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Escape') return;
+    document.getElementById('lightbox').classList.remove('active');
+    document.getElementById('videoModal').classList.remove('active');
+    document.getElementById('videoFrame').innerHTML = '';
+    document.body.style.overflow = '';
+});
+</script>
 {% endblock %}
