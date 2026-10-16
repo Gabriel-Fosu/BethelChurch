@@ -20,21 +20,20 @@
   </div>
 </div>
 <header>
-  <div class="nav-logo reveal">Bethel Baptist Church</div>
-  <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-  <label for="menu-toggle" class="menu-btn">
-    <span></span>
-    <span></span>
-    <span></span>
-  </label>
+  <a href="/" class="nav-logo reveal">
+    <span style="color:var(--gold);">✝</span>
+    Bethel Baptist Church
+  </a>
+  <input type="checkbox" id="menu-toggle" class="menu-toggle"/>
   <nav class="nav-links reveal reveal-delay-1" id="navLinks">
     <a href="/">Home</a>
     <div class="dropdown">
-      <a href="/about/">About</a>
+      <a href="/about/" class="dropdown-toggle">
+        About <span class="dropdown-arrow">▾</span>
+      </a>
       <div class="dropdown-menu">
-        <a href="#history">Who We Are</a>
-        <a href="#team">Meet Our Leadership</a>
-        <a href="#"></a>
+        <a href="/about/#history">Who We Are</a>
+        <a href="/about/#team">Meet Our Leadership</a>
       </div>
     </div>
     <a href="{% url 'sermon_list' %}">Sermons</a>
@@ -45,6 +44,11 @@
     <a href="{% url 'project' %}">Project</a>
     <a href="{% url 'gallery' %}">Gallery</a>
   </nav>
+  <label for="menu-toggle" class="menu-btn" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
 </header>
 <main class="p-4">
   {% if messages %}
